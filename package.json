@@ -24,7 +24,10 @@
   "devDependencies": {
     "@ninthsun91/eslint-config": "^1.2.0",
     "@types/jest": "^29.5.11",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/lodash": "^4.17.0",
     "@types/node": "^20.11.5",
+    "@types/qs": "^6.9.14",
     "eslint": "^8.56.0",
     "husky": "^8.0.0",
     "jest": "^29.7.0",
@@ -61,5 +64,11 @@
     "{src,test}/**/*.ts": [
       "eslint --fix"
     ]
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "qs": "^6.12.0"
   }
 }
