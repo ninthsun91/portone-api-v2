@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
 import qs from 'qs';
 import _ from 'lodash';
 
@@ -6,9 +6,10 @@ import { CONSTANT } from './constants';
 import { Jwt } from './utils/jwt';
 import type { Request, Response, Token } from './types';
 
-interface PortOneProperties {
+export interface PortOneOptions {
   apiSecret: string;
   baseUrl?: string;
+  axiosConfig?: CreateAxiosDefaults;
 }
 
 export class PortOneClient {
@@ -17,17 +18,18 @@ export class PortOneClient {
   private apiInstance: AxiosInstance;
   private token: Token;
 
-  constructor({ apiSecret, baseUrl }: PortOneProperties) {
+  constructor({ apiSecret, axiosConfig }: PortOneOptions) {
     this.apiSecret = apiSecret;
-    this.baseUrl = baseUrl || CONSTANT.BASE_URL;
+    this.baseUrl = axiosConfig?.baseURL || CONSTANT.BASE_URL;
     this.token = {
       accessToken: '',
       refreshToken: '',
     };
 
     this.apiInstance = axios.create({
-      baseURL: this.baseUrl,
       paramsSerializer: params => qs.stringify(params, { arrayFormat: 'brackets' }),
+      ...axiosConfig,
+      baseURL: this.baseUrl,
     });
   }
 

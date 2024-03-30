@@ -1,12 +1,12 @@
 import { BillingKey } from './billing-key';
-import { PortOneClient } from './client';
+import { PortOneClient, PortOneOptions } from './client';
 import { PortOneRequest } from './request';
 
 export class PortOne {
   declare public billingkey: BillingKey;
 
-  constructor(apiSecret: string) {
-    const client = new PortOneClient({ apiSecret });
+  constructor(options: PortOneOptions) {
+    const client = new PortOneClient(options);
 
     const routes: (typeof PortOneRequest)[] = [
       BillingKey,
