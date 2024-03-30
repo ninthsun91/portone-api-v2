@@ -7,11 +7,8 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "lib",
     "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*", "dist/*"],
-    },
 
     "target": "ES2022",
     "module": "CommonJS",
@@ -20,7 +17,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "removeComments": true,
+    "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
 
