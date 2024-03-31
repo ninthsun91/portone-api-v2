@@ -1,6 +1,6 @@
-import { CustomerInput, SeparatedAddressInput } from '../common';
+import type { CustomerInput, PageInput, SeparatedAddressInput } from '../common';
 import type * as Enum from '../enums';
-import type { CancelPaymentBodyRefundAccount, CashReceiptInput, PageInput, PaymentAmountInput, PaymentFilterInput, PaymentProduct } from '../payments';
+import type { CancelPaymentBodyRefundAccount, CashReceiptInput, PaymentAmountInput, PaymentFilterInput, PaymentProduct } from '../payments';
 
 export interface PreRegisterPayment {
   /** 상점 ID. 미입력시 토큰에 담긴 상점 ID 사용 */

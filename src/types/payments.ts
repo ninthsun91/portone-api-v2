@@ -1,25 +1,6 @@
 import type { Card, Customer, DateTimeRange, SelectedChannel } from './common';
 import type * as Enum from './enums';
 
-/****************************/
-/*         PageInfo         */
-/****************************/
-export interface PageInfo {
-  /** 요청된 페이지 번호 (int32) */
-  number: number;
-  /** 요청된 페이지 당 객체 수 (int32) */
-  size: number;
-  /** 실제 반환된 객체 수 (int32) */
-  totalCount: number;
-}
-
-export interface PageInput {
-  /** 0부터 시작하는 페이지 번호 (int32) */
-  number?: number;
-  /** 각 페이지 당 포함할 객체 수 */
-  size?: number;
-}
-
 /***************************/
 /*         Payment         */
 /***************************/
@@ -41,7 +22,7 @@ interface PaymentBase {
   transactionId: string;
   /** 가맹점 ID */
   merchantId: string;
-  /** 상점 ID */
+  /** 상점 ID. 미입력시 토큰에 담긴 상점 ID 사용 */
   storeId: string;
   /** 결제, 본인인증에 사용된 채널 정보 */
   channel?: SelectedChannel;

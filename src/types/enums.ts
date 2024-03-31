@@ -203,6 +203,15 @@ export const PaymentProductType = {
 } as const;
 export type PaymentProductType = typeof PaymentProductType[keyof typeof PaymentProductType];
 
+export const PaymentScheduleStatus = {
+  SCHEDULED: 'SCHEDULED',
+  STARTED: 'STARTED',
+  FAILED: 'FAILED',
+  REVOKED: 'REVOKED',
+  SUCCEEDED: 'SUCCEEDED',
+} as const;
+export type PaymentScheduleStatus = typeof PaymentScheduleStatus[keyof typeof PaymentScheduleStatus];
+
 export const PaymentSortBy = {
   REQUESTED_AT: 'REQUESTED_AT',
   STATUS_CHANGED_AT: 'STATUS_CHANGED_AT',

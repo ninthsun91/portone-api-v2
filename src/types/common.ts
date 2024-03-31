@@ -1,8 +1,8 @@
 import type * as Enum from './enums';
 
-/***********/
-/* Address */
-/***********/
+/***************************/
+/*         Address         */
+/***************************/
 export type Address = {
   type: 'ONE_LINE' | 'SEPARATED';
   oneLine: string;
@@ -21,9 +21,9 @@ export interface SeparatedAddressInput {
   country?: Enum.Country;
 }
 
-/************/
-/*   Card   */
-/************/
+/****************************/
+/*           Card           */
+/****************************/
 export type Card = {
   /** 발행사 코드 */
   publisher?: string;
@@ -55,9 +55,9 @@ export interface CardCredential {
   passwordTwoDigits?: string;
 }
 
-/***********/
-/* Channel */
-/***********/
+/***************************/
+/*         Channel         */
+/***************************/
 export type SelectedChannel = {
   type: Enum.SelectedChannelType;
   /** 채널 ID */
@@ -72,9 +72,9 @@ export type SelectedChannel = {
   pgMerchantId: string;
 };
 
-/************/
-/* Customer */
-/************/
+/****************************/
+/*         Customer         */
+/****************************/
 export interface Customer {
   id?: string;
   name?: string;
@@ -111,12 +111,31 @@ export interface CustomerSeparatedName {
   last: string;
 }
 
-/*****************/
-/* DateTimaRange */
-/*****************/
+/***************************/
+/*      DateTimeRange      */
+/***************************/
 export interface DateTimeRange {
   /** RFC 3339 date-time */
   from: string;
   /** RFC 3339 date-time */
   until: string;
+}
+
+/****************************/
+/*         PageInfo         */
+/****************************/
+export interface PageInfo {
+  /** 요청된 페이지 번호 (int32) */
+  number: number;
+  /** 요청된 페이지 당 객체 수 (int32) */
+  size: number;
+  /** 실제 반환된 객체 수 (int32) */
+  totalCount: number;
+}
+
+export interface PageInput {
+  /** 0부터 시작하는 페이지 번호 (int32) */
+  number?: number;
+  /** 각 페이지 당 포함할 객체 수 */
+  size?: number;
 }

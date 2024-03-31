@@ -43,12 +43,20 @@ export interface ChannelNotFoundError extends PortOneError {
   type: 'CHANNEL_NOT_FOUND';
 }
 
+export interface PaymentScheduleNotFoundError extends PortOneError {
+  type: 'PAYMENT_SCHEDULE_NOT_FOUND';
+}
+
 /*******/
 /* 409 */
 /*******/
 
 export interface AlreadyPaidError extends PortOneError {
   type: 'ALREADY_PAID';
+}
+
+export interface AlreadyPaidOrWaitingError extends PortOneError {
+  type: 'ALREADY_PAID_OR_WAITING';
 }
 
 export interface BillingKeyAlreadyDeletedError extends PortOneError {
@@ -75,12 +83,24 @@ export interface PaymentAlreadyCancelledError extends PortOneError {
   type: 'PAYMENT_ALREADY_CANCELLED';
 }
 
+export interface PastPaymentScheduleError extends PortOneError {
+  type: 'PAST_PAYMENT_SCHEDULE';
+}
+
 export interface PaymentNotPaidError extends PortOneError {
   type: 'PAYMENT_NOT_PAID';
 }
 
 export interface PaymentScheduleAlreadyExistsError extends PortOneError {
   type: 'PAYMENT_SCHEDULE_ALREADY_EXISTS';
+}
+
+export interface PaymentScheduleAlreadyProcessedError extends PortOneError {
+  type: 'PAYMENT_SCHEDULE_ALREADY_PROCESSED';
+}
+
+export interface PaymentScheduleAlreadyRevokedError extends PortOneError {
+  type: 'PAYMENT_SCHEDULE_ALREADY_REVOKED';
 }
 
 export interface SumOfPartsExceedsCancelAmountError extends PortOneError {

@@ -1,5 +1,6 @@
 import type { BillingKeyPaymentSummary } from '../billing-key';
-import type { PageInfo, Payment, PaymentCancellation } from '../payments';
+import type { PageInfo } from '../common';
+import type { Payment, PaymentCancellation } from '../payments';
 
 export interface PreRegisterPayment {}
 
