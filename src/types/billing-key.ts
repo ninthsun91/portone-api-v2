@@ -30,7 +30,7 @@ export interface BillingKeyPaymentMethodEasyPayCharge {
 
 export interface BillingKeyPaymentMethodMobile {
   type: 'BillingKeyPaymentMethodMobile';
-  phoneNumber?: string; // 전화번호
+  phoneNumber?: string;
 }
 
 export interface BillingKeyPaymentMethodPaypal {
@@ -39,13 +39,24 @@ export interface BillingKeyPaymentMethodPaypal {
 
 export interface BillingKeyPaymentMethodTransfer {
   type: 'BillingKeyPaymentMethodTransfer';
-  bank?: string; // 표준 은행 코드
-  accountNumber?: string; // 계좌번호
+  /** 표준 은행 코드 */
+  bank?: string;
+  /** 계좌 번호 */
+  accountNumber?: string;
+}
+
+export interface BillingKeyPaymentSummary {
+  /** PG사 결제 ID */
+  pgTxId: string;
+  /** 결제 완료 시점 (RFC 3339 date-time) */
+  paidAt: string;
 }
 
 export interface BillingKeyInfoSummary {
-  billingKey: string; // 발급된 빌링키
-  issuedAt: string; // 빌링키 발급 완료 시점 (RFC 3339 date-time)
+  /** 빌링키 */
+  billingKey: string;
+  /** 발급 완료 시점 (RFC 3339 date-time) */
+  issuedAt: string;
 }
 
 export interface InstantBillingKeyPaymentMethodInput {

@@ -23,6 +23,6 @@ export class PortOneRequest {
 }
 
 interface RequestConfig extends AxiosRequestConfig {
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   url: string;
 }
