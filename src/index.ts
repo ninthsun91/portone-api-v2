@@ -23,3 +23,5 @@ export class PortOne {
     });
   }
 }
+
+export * from './types';

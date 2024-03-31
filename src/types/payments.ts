@@ -464,3 +464,9 @@ export interface PaymentWebhookResponse {
   /** 웹훅 응답 시점 (RFC 3339 date-time) */
   respondedAt: string;
 }
+
+export interface PaymentWebhookCallbackBody {
+  tx_id: string;
+  payment_id: string;
+  status: string;
+}
