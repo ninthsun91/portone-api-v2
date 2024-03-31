@@ -8,7 +8,6 @@
   ],
   "compilerOptions": {
     "outDir": "lib",
-    "baseUrl": ".",
 
     "target": "ES2022",
     "module": "CommonJS",

@@ -1,22 +1,19 @@
 {
   "name": "portone-api-v2",
   "version": "0.0.1",
-  "description": "",
+  "description": "PortOne REST API v2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "======================start======================": "",
     "build": "tsc",
     "start": "node -r tsconfig-paths/register dist/index.js",
-    "======================test======================": "",
+    "deploy": "npm run build && npm publish",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "lint:ci": "eslint \"{src,test}/**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "======================npm======================": "",
-    "clean": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "prepare": "husky install"
   },
   "keywords": [
@@ -29,6 +26,10 @@
     "README.md"
   ],
   "author": "ninthsun91",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ninthsun91/portone-api-v2"
+  },
   "license": "MIT",
   "devDependencies": {
     "@ninthsun91/eslint-config": "^1.2.0",
