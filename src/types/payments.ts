@@ -1,5 +1,74 @@
-import type { Card, Customer, DateTimeRange, SelectedChannel } from './common';
+import type { Card, CardCredential, Customer, DateTimeRange, SelectedChannel, SeparatedAddressInput } from './common';
 import type * as Enum from './enums';
+
+/***************************/
+/*     Instant Payment     */
+/***************************/
+export interface InstantPaymentMethodInput {
+  card?: InstantPaymentMethodInputCard;
+  virtualAccount?: InstantPaymentMethodInputVirtualAccount;
+}
+
+export interface InstantPaymentMethodInputCard {
+  /** 카드 인증 관련 정보 */
+  credential: CardCredential;
+  /** 할부 개월 수 (int32) */
+  installmentMonth?: number;
+  /** 무이자 할부 여부 */
+  useFreeInstallmentPlan?: boolean;
+  /** 무이자 할부를 가맹점이 부담할지 여부 */
+  useFreeInterestFromMerchant?: boolean;
+  /** 카드 포인트 사용 여부 */
+  useCardPoint?: boolean;
+}
+
+export interface InstantPaymentMethodInputVirtualAccount {
+  /** 은행 */
+  bank: Enum.Bank;
+  /** 입금 만료 기한. validHours와 dueDate 둘 중 하나의 필드만 입력 */
+  expiry: InstantPaymentMethodInputVirtualAccountExpiry;
+  /** 가상계좌 발급 방식 */
+  option: InstantPaymentMethodInputVirtualAccountOption;
+  /** 가상계좌 결제 시 현금영수증 정보 */
+  cashReceipt: InstantPaymentMethodInputVirtualAccountCashReceiptInfo;
+  /** 예금주명 */
+  remitteeName?: string;
+}
+
+export interface InstantPaymentMethodInputVirtualAccountExpiry {
+  /** 만료 시간 (int32) */
+  validHours?: number;
+  /** 만료일 (RFC 3339 date-time) */
+  dueDate?: string;
+}
+
+export interface InstantPaymentMethodInputVirtualAccountOption {
+  /** 가상계좌 발급 유형 */
+  type: Enum.InstantPaymentMethodInputVirtualAccountOptionType;
+  /** 고정식 가상계좌 발급 유형 */
+  fixed?: InstantPaymentMethodInputVirtualAccountOptionFixed;
+}
+
+export interface InstantPaymentMethodInputVirtualAccountOptionFixed {
+  /** 고정식 가상계좌 Account ID. 가맹점이 가상계좌번호를 직접 관리하지 않고 PG사가 pgAccountId에 매핑되는 가상계좌번호를 내려주는 방식입니다. 동일한 pgAccountId로 가상계좌 발급 요청시에는 항상 같은 가상계좌번호가 내려옵니다. */
+  pgAccountId?: string;
+  /** 고정식 가상계좌 Account Number */
+  accountNumber?: string;
+}
+
+export interface InstantPaymentMethodInputVirtualAccountCashReceiptInfo {
+  /** 입력시 발급 유형 */
+  type: Enum.CashReceiptInputType;
+  /** 사용자 식별 번호 */
+  customerIdentityNumber: string;
+}
+
+export interface InstantPaymentSummary {
+  /** PG사 결제 ID */
+  pgTxId: string;
+  /** 결제 완료 시점 (RFC 3339 date-time) */
+  paidAt: string;
+}
 
 /***************************/
 /*         Payment         */
@@ -253,6 +322,30 @@ export interface PaymentEscrow {
   status: PaymentEscrowStatus;
 }
 
+export interface PaymentEscrowSenderInput {
+  /** 이름 */
+  name?: string;
+  /** 전화번호 */
+  phoneNumber?: string;
+  /** 우편번호 */
+  zipCode?: string;
+  /** 수취인과의 관계 */
+  relationship?: string;
+  /** 분리형식 주소 입력 정보 */
+  address?: SeparatedAddressInput;
+}
+
+export interface PaymentEscrowReceiverInput {
+  /** 이름 */
+  name?: string;
+  /** 전화번호 */
+  phoneNumber?: string;
+  /** 우편번호 */
+  zipCode?: string;
+  /** 분리형식 주소 입력 정보 */
+  address?: SeparatedAddressInput;
+}
+
 /***************************/
 /*      PaymentFilter      */
 /***************************/
@@ -321,6 +414,22 @@ export interface PaymentInstallment {
   month: number;
   /** 무이자 할부 여부 */
   isInterestFree: boolean;
+}
+
+/**************************/
+/*    PaymentLogistics    */
+/**************************/
+export interface PaymentLogistics {
+  /** 물류 회사 */
+  company: Enum.PaymentLogisticsCompany;
+  /** 송장번호 */
+  invoiceNumber: string;
+  /** 발송시점 (RFC 3339 date-time) */
+  sendAt: string;
+  /** 수령시점 (RFC 3339 date-time) */
+  receivedAt?: string;
+  /** 분리형식 주소 입력 정보 */
+  address?: SeparatedAddressInput;
 }
 
 /***************************/
@@ -469,4 +578,24 @@ export interface PaymentWebhookCallbackBody {
   tx_id: string;
   payment_id: string;
   status: string;
+}
+
+/***************************/
+/*      RegisterStore      */
+/***************************/
+export interface RegisterStoreReceiptBodyItem {
+  /** 하위 상점 거래 사업자등록번호 */
+  storeBusinessRegisterationNumber: string;
+  /** 하위 상점명 */
+  storeName: string;
+  /** 결제 총 금액 (int64) */
+  totalAmount: number;
+  /** 면세액 (int64) */
+  taxFreeAmount?: number;
+  /** 부가세액 (int64) */
+  vatAmount?: number;
+  /** 공금가액 (int64) */
+  supplyAmount?: number;
+  /** 통화단위 */
+  currency: Enum.Currency;
 }

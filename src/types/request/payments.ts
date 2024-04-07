@@ -1,6 +1,17 @@
 import type { CustomerInput, PageInput, SeparatedAddressInput } from '../common';
 import type * as Enum from '../enums';
-import type { CancelPaymentBodyRefundAccount, CashReceiptInput, PaymentAmountInput, PaymentFilterInput, PaymentProduct } from '../payments';
+import type {
+  CancelPaymentBodyRefundAccount,
+  CashReceiptInput,
+  InstantPaymentMethodInput,
+  PaymentAmountInput,
+  PaymentEscrowReceiverInput,
+  PaymentEscrowSenderInput,
+  PaymentFilterInput,
+  PaymentLogistics,
+  PaymentProduct,
+  RegisterStoreReceiptBodyItem,
+} from '../payments';
 
 export interface PreRegisterPayment {
   /** 상점 ID. 미입력시 토큰에 담긴 상점 ID 사용 */
@@ -75,16 +86,90 @@ export interface PayWithBillingKey {
   bypass?: string;
 }
 
-export interface PayInstant {}
+export interface PayInstant {
+  /** 미입력시 인증토큰에 등록된 storeId 사용 */
+  storeId?: string;
+  /** 채널키 */
+  channelKey: string;
+  /** 수기 결제 수단 입력 정보 */
+  method: InstantPaymentMethodInput;
+  /** 주문명 */
+  orderName: string;
+  /** 문화비 지출 여부 */
+  isCulturalExpense?: boolean;
+  /** 에스크로 결제 여부 */
+  isEscrow?: boolean;
+  /** 고객 정보 입력 정보 */
+  customer?: CustomerInput;
+  /** 사용자 지정 데이터 */
+  customData?: string;
+  /** 금액 세부 입력 정보 */
+  amount: PaymentAmountInput;
+  /** 통화 단위 */
+  currency: Enum.Currency;
+  /** 국가 */
+  country?: Enum.Country;
+  /** 웹훅 주소. 결제 승인/실패 시 요청을 받을 웹훅 주소입니다. 상점에 설정되어 있는 값보다 우선적으로 적용됩니다. 입력된 값이 없을 경우에는 빈 배열로 해석됩니다. */
+  noticeUrls?: string[];
+  /** 상품 정보 */
+  products?: PaymentProduct[];
+  /** 상품 개수 */
+  productCount?: number;
+  /** 상품 유형 */
+  productType?: Enum.PaymentProductType;
+  /** 분리 형식의 주소 입력 정보 */
+  shippingAddress?: SeparatedAddressInput;
+}
 
 export interface CloseVirtualAccount {}
 
-export interface CreateEscrowLogistics {}
+export interface CreateEscrowLogistics {
+  /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
+  storeId?: string;
+  /** 에스크로 발송자 정보 */
+  sender?: PaymentEscrowSenderInput;
+  /** 에스크로 수취자 정보 */
+  receiver?: PaymentEscrowReceiverInput;
+  /** 에스크로 배송 정보 */
+  logistics: PaymentLogistics;
+  /** 이메일 알림 전송 여부 */
+  sendEmail?: boolean;
+  /** 상품 정보 */
+  products?: PaymentProduct[];
+}
 
-export interface UpdateEscrowLogistics {}
+export interface UpdateEscrowLogistics {
+  /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
+  storeId?: string;
+  /** 에스크로 발송자 정보 */
+  sender?: PaymentEscrowSenderInput;
+  /** 에스크로 수취자 정보 */
+  receiver?: PaymentEscrowReceiverInput;
+  /** 에스크로 배송 정보 */
+  logistics: PaymentLogistics;
+  /** 이메일 알림 전송 여부 */
+  sendEmail?: boolean;
+  /** 상품 정보 */
+  products?: PaymentProduct[];
+}
 
-export interface CompleteEscrow {}
+export interface CompleteEscrow {
+  /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
+  storeId?: string;
+  /** 확인 주체가 상점인지 여부. 구매확정요청 주체가 가맹점 관리자인지 구매자인지 구분하기 위한 필드입니다. 네이버페이 전용 파라미터이며, 구분이 모호한 경우 가맹점 관리자(true)로 입력합니다. */
+  fromStore?: boolean;
+}
 
-export interface ResendWebhook {}
+export interface ResendWebhook {
+  /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
+  storeId?: string;
+  /** 웹훅 ID */
+  webhookId?: string;
+}
 
-export interface RegisterStoreReceipt {}
+export interface RegisterStoreReceipt {
+  /** 하위 상점 거래 목록 */
+  items: RegisterStoreReceiptBodyItem[];
+  /** 상점 ID */
+  storeId?: string;
+}

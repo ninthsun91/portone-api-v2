@@ -141,6 +141,12 @@ export const Gender = {
 } as const;
 export type Gender = typeof Gender[keyof typeof Gender];
 
+export const InstantPaymentMethodInputVirtualAccountOptionType = {
+  NORMAL: 'NORMAL',
+  FIXED: 'FIXED',
+} as const;
+export type InstantPaymentMethodInputVirtualAccountOptionType = typeof InstantPaymentMethodInputVirtualAccountOptionType[keyof typeof InstantPaymentMethodInputVirtualAccountOptionType];
+
 export const PaymentCashReceiptStatus = {
   ISSUED: 'ISSUED',
   CANCELLED: 'CANCELLED',
@@ -163,6 +169,40 @@ export const PaymentFilterInputEscrowStatus = {
   REGISTERED: 'REGISTERED',
 } as const;
 export type PaymentFilterInputEscrowStatus = typeof PaymentFilterInputEscrowStatus[keyof typeof PaymentFilterInputEscrowStatus];
+
+export const PaymentLogisticsCompany = {
+  POST_REGISTERED: 'POST_REGISTERED',
+  GOODSTOLUCK: 'GOODSTOLUCK',
+  UPS: 'UPS',
+  CJ_INTL: 'CJ_INTL',
+  LOTTE: 'LOTTE',
+  CHUNIL: 'CHUNIL',
+  KGL: 'KGL',
+  EMS: 'EMS',
+  ILYANG: 'ILYANG',
+  HAPDONG: 'HAPDONG',
+  SUNGWON: 'SUNGWON',
+  KUNYOUNG: 'KUNYOUNG',
+  LOGEN: 'LOGEN',
+  LX_PANTOS: 'LX_PANTOS',
+  DHL: 'DHL',
+  HANJIN: 'HANJIN',
+  FEDEX: 'FEDEX',
+  ACI: 'ACI',
+  WOORI: 'WOORI',
+  CJ: 'CJ',
+  GS: 'GS',
+  DONGWON: 'DONGWON',
+  USPS: 'USPS',
+  KYUNGDONG: 'KYUNGDONG',
+  SF: 'SF',
+  DAESIN: 'DAESIN',
+  ETC: 'ETC',
+  SLX: 'SLX',
+  GSM_NTON: 'GSM_NTON',
+  POST: 'POST',
+} as const;
+export type PaymentLogisticsCompany = typeof PaymentLogisticsCompany[keyof typeof PaymentLogisticsCompany];
 
 export const PaymentMethodGiftCertificateType = {
   SMART_MUNSANG: 'SMART_MUNSANG',

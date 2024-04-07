@@ -47,6 +47,10 @@ export interface PaymentScheduleNotFoundError extends PortOneError {
   type: 'PAYMENT_SCHEDULE_NOT_FOUND';
 }
 
+export interface WebhookNotFoundError extends PortOneError {
+  type: 'WEBHOOK_NOT_FOUND';
+}
+
 /*******/
 /* 409 */
 /*******/
@@ -89,6 +93,10 @@ export interface PastPaymentScheduleError extends PortOneError {
 
 export interface PaymentNotPaidError extends PortOneError {
   type: 'PAYMENT_NOT_PAID';
+}
+
+export interface PaymentNotWaitingForDepositError extends PortOneError {
+  type: 'PAYMENT_NOT_WAITING_FOR_DEPOSIT';
 }
 
 export interface PaymentScheduleAlreadyExistsError extends PortOneError {
