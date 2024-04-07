@@ -77,29 +77,17 @@ app.post('/payments/callback', async (req, res) => {
 ### 완성 API
 다음의 API들은 정상적으로 사용이 가능합니다.
 - 인증 관련 API
-- 결제 관련 API 일부
-  - 결제 정보 사전 등록
-  - 결제 단건 조회
-  - 결제 다건 조회
-  - 결제 취소
-  - 빌링키 결제
+- 결제 관련 API
 - 결제 예약 관련 API
 - 빌링키 관련 API
 
 ### 현재 미완성 API
 다음의 API들은 해당 메소드 존재 여부와 상관없이 정상적인 API 요청이 안 이루어질 수 있습니다.
 - 결제 관련 API 일부
-  - 결제 대용량 다건 조회(커서)
-  - 수기 결제
-  - 가상계좌 말소
-  - 에스크로 배송정보 등록
-  - 에스크로 배송정보 수정
-  - 에스크로 구매 확정
-  - 웹훅 재발송
-  - 영수증 내 하위 상점 거래 등록
+  - 결제 대용량 다건 조회(커서기반)
 - 현금 영수증 관련 API
 - 본인인증 관련 API
 - 특정 PG사 관련 API
 
 
-last updated: 2024-03-30 (works with [`@portone/browser-sdk@0.0.5`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
+last updated: 2024-04-07 (works with [`@portone/browser-sdk@0.0.5`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
