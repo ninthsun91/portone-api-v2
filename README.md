@@ -2,7 +2,9 @@
 
 - [PortOne 개발자센터 - REST API V2](https://developers.portone.io/api/rest-v2?v=v2)
 
-포트원 API V2의 request, response 타입을 모두 직접적으로 지원합니다.
+포트원 API V2의 request, response 타입에 대한 자동완성을 모두 지원합니다.
+![alt text](public/request-auto-complete.png)
+![alt text](public/response-auto-complete.png)
 
 단, 작성자 본인이 사용하는 API 이외에는 완성이 안되어 있으며, 이는 점진적으로 추가 예정입니다. 혹시 이 문구가 있는 버전을 사용하시는 분들은 아래 지원 API 목록에서 본인이 필요한 API를 확인해주세요.
 
