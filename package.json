@@ -1,13 +1,12 @@
 {
   "name": "portone-api-v2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PortOne REST API v2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "start": "node -r tsconfig-paths/register dist/index.js",
-    "deploy": "npm run build && npm publish",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "lint:ci": "eslint \"{src,test}/**/*.ts\"",
     "test": "jest",
