@@ -43,6 +43,14 @@ export interface ChannelNotFoundError extends PortOneError {
   type: 'CHANNEL_NOT_FOUND';
 }
 
+export interface CashReceiptNotFoundError extends PortOneError {
+  type: 'CASH_RECEIPT_NOT_FOUND';
+}
+
+export interface CashReceiptNotIssuedError extends PortOneError {
+  type: 'CASH_RECEIPT_NOT_ISSUED';
+}
+
 export interface PaymentScheduleNotFoundError extends PortOneError {
   type: 'PAYMENT_SCHEDULE_NOT_FOUND';
 }
@@ -81,6 +89,10 @@ export interface CancelTaxAmountExceedsCancellableTaxAmountError extends PortOne
 
 export interface CancelTaxFreeAmountExceedsCancellableTaxFreeAmountError extends PortOneError {
   type: 'CANCEL_TAX_FREE_AMOUNT_EXCEEDS_CANCELLABLE_TAX_FREE_AMOUNT';
+}
+
+export interface CashReceiptAlreadyIssuedError extends PortOneError {
+  type: 'CASH_RECEIPT_ALREADY_ISSUED';
 }
 
 export interface PaymentAlreadyCancelledError extends PortOneError {

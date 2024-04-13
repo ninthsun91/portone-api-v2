@@ -1,11 +1,13 @@
-import { BillingKey } from './billing-key';
 import { PortOneClient, PortOneOptions } from './client';
-import { Payments } from './payments';
 import { PortOneRequest } from './request';
+import { BillingKey } from './billing-key';
+import { CashReceipt } from './cash-receipt';
+import { Payments } from './payments';
 import { Schedules } from './schedule';
 
 export class PortOne {
   declare public billingkey: BillingKey;
+  declare public cashreceipt: CashReceipt;
   declare public payments: Payments;
   declare public schedules: Schedules;
 
@@ -14,6 +16,7 @@ export class PortOne {
 
     const routes: (typeof PortOneRequest)[] = [
       BillingKey,
+      CashReceipt,
       Payments,
       Schedules,
     ];
