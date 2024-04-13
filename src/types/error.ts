@@ -51,6 +51,14 @@ export interface CashReceiptNotIssuedError extends PortOneError {
   type: 'CASH_RECEIPT_NOT_ISSUED';
 }
 
+export interface IdentityVerificationNotFoundError extends PortOneError {
+  type: 'IDENTITY_VERIFICATION_NOT_FOUND';
+}
+
+export interface IdentityVerificationNotSentError extends PortOneError {
+  type: 'IDENTITY_VERIFICATION_NOT_SENT';
+}
+
 export interface PaymentScheduleNotFoundError extends PortOneError {
   type: 'PAYMENT_SCHEDULE_NOT_FOUND';
 }
@@ -93,6 +101,14 @@ export interface CancelTaxFreeAmountExceedsCancellableTaxFreeAmountError extends
 
 export interface CashReceiptAlreadyIssuedError extends PortOneError {
   type: 'CASH_RECEIPT_ALREADY_ISSUED';
+}
+
+export interface IdentityVerificationAlreadyVerifiedError extends PortOneError {
+  type: 'IDENTITY_VERIFICATION_ALREADY_VERIFIED';
+}
+
+export interface IdentityVerificationAlreadySendError extends PortOneError {
+  type: 'IDENTITY_VERIFICATION_ALREADY_SEND';
 }
 
 export interface PaymentAlreadyCancelledError extends PortOneError {

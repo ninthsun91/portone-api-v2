@@ -141,6 +141,22 @@ export const Gender = {
 } as const;
 export type Gender = typeof Gender[keyof typeof Gender];
 
+export const IdentityVerificationOperator = {
+  SKT: 'SKT',
+  KT: 'KT',
+  LGU: 'LGU',
+  KT_MVNO: 'KT_MVNO',
+  LGU_MVNO: 'LGU_MVNO',
+  SKT_MVNO: 'SKT_MVNO',
+} as const;
+export type IdentityVerificationOperator = typeof IdentityVerificationOperator[keyof typeof IdentityVerificationOperator];
+
+export const IdentityVerificationMethod = {
+  SMS: 'SMS',
+  APP: 'APP',
+} as const;
+export type IdentityVerificationMethod = typeof IdentityVerificationMethod[keyof typeof IdentityVerificationMethod];
+
 export const InstantPaymentMethodInputVirtualAccountOptionType = {
   NORMAL: 'NORMAL',
   FIXED: 'FIXED',

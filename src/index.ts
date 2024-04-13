@@ -4,10 +4,12 @@ import { BillingKey } from './billing-key';
 import { CashReceipt } from './cash-receipt';
 import { Payments } from './payments';
 import { Schedules } from './schedule';
+import { Identity } from './identity';
 
 export class PortOne {
   declare public billingkey: BillingKey;
   declare public cashreceipt: CashReceipt;
+  declare public identity: Identity;
   declare public payments: Payments;
   declare public schedules: Schedules;
 
@@ -17,6 +19,7 @@ export class PortOne {
     const routes: (typeof PortOneRequest)[] = [
       BillingKey,
       CashReceipt,
+      Identity,
       Payments,
       Schedules,
     ];
