@@ -2,14 +2,16 @@ import { PortOneClient, PortOneOptions } from './client';
 import { PortOneRequest } from './request';
 import { BillingKey } from './billing-key';
 import { CashReceipt } from './cash-receipt';
+import { Identity } from './identity';
+import { KakaoPay } from './kakao-pay';
 import { Payments } from './payments';
 import { Schedules } from './schedule';
-import { Identity } from './identity';
 
 export class PortOne {
   declare public billingkey: BillingKey;
   declare public cashreceipt: CashReceipt;
   declare public identity: Identity;
+  declare public kakaopay: KakaoPay;
   declare public payments: Payments;
   declare public schedules: Schedules;
 
@@ -20,6 +22,7 @@ export class PortOne {
       BillingKey,
       CashReceipt,
       Identity,
+      KakaoPay,
       Payments,
       Schedules,
     ];
