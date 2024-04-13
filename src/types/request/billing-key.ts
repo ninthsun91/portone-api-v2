@@ -2,10 +2,15 @@ import type { InstantBillingKeyPaymentMethodInput } from '../billing-key';
 import type { CustomerInput } from '../common';
 
 export interface IssueBillingKey {
+  /** 상점 ID. 미입력시 토큰에 담긴 값 사용 */
   storeId?: string;
+  /** 빌링키 발급 시 결제 수단 입력 양식 */
   method: InstantBillingKeyPaymentMethodInput;
+  /** 채널키 */
   channelKey: string;
+  /** 고객정보 입력 정보 */
   customer?: CustomerInput;
+  /** 사용자 지정 데이터 */
   customData?: string;
   /** pg사별 특수 파라미터 */
   bypass?: string;

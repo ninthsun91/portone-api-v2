@@ -4,7 +4,9 @@ import type { PaymentSchedule, PaymentScheduleSummary } from '../schedules';
 export type FindSchedule = PaymentSchedule;
 
 export interface FindManySchedules {
+  /** 조회된 결제 예약 건 리스트 */
   items: PaymentSchedule[];
+  /** 반환된 페이지 결과 정보 */
   page: PageInfo;
 }
 
@@ -16,5 +18,6 @@ export interface CancelSchedule {
 }
 
 export interface ScheduleNextPayment {
+  /** 결제 예약 건 */
   schedule: PaymentScheduleSummary;
 }

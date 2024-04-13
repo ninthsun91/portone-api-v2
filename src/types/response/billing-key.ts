@@ -2,6 +2,7 @@ import type { BillingKeyInfoSummary, BillingKeyPaymentMethod } from '../billing-
 import type { Customer, SelectedChannel } from '../common';
 
 export interface FindBillingKey {
+  /** 빌링키 */
   billingKey: string;
   /** 가맹점 ID */
   merchantId: string;

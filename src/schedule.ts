@@ -7,6 +7,11 @@ export class Schedules extends PortOneRequest {
     super(portone);
   }
 
+  /**
+   * 결제 예약 단건 조회
+   * @param scheduleId 조회할 결제 예약 건 ID
+   * @param storeId 상점 ID. 미입력 시 토큰에 담긴 값 사용
+   */
   public async find(scheduleId: string, storeId?: string) {
     return this.request<Response.FindSchedule>({
       method: 'GET',
@@ -14,6 +19,9 @@ export class Schedules extends PortOneRequest {
     });
   }
 
+  /**
+   * 결제 예약 다건 조회
+   */
   public async findMany(data: Request.FindManySchedules, requestBody?: unknown) {
     return this.request<Response.FindManySchedules>({
       method: 'GET',
@@ -22,6 +30,9 @@ export class Schedules extends PortOneRequest {
     });
   }
 
+  /**
+   * 결제 예약 취소
+   */
   public async cancel(data: Request.CancelSchedule, requestBody?: unknown) {
     return this.request<Response.CancelSchedule>({
       method: 'DELETE',
@@ -30,6 +41,10 @@ export class Schedules extends PortOneRequest {
     });
   }
 
+  /**
+   * 결제 예약
+   * @param paymentId 결제 건 ID
+   */
   public async nextPayment(paymentId: string, data: Request.ScheduleNextPayment) {
     return this.request<Response.ScheduleNextPayment>({
       method: 'POST',

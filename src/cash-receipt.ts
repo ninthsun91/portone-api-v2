@@ -20,7 +20,7 @@ export class CashReceipt extends PortOneRequest {
   }
 
   /**
-   * 현금영수증 발급 요청
+   * 현금영수증 발급
    */
   public async issue(data: Request.IssueCashReceipt) {
     return this.request<Response.IssueCashReceipt>({
@@ -31,7 +31,7 @@ export class CashReceipt extends PortOneRequest {
   }
 
   /**
-   * 현금영수증 취소 요청
+   * 현금영수증 취소
    * @param paymentId 결제 건 ID
    * @param storeId 상점 ID. 미입력 시 토큰에 담긴 값 사용
    */
