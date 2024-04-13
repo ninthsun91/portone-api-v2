@@ -6,7 +6,9 @@
 ![alt text](public/request-auto-complete.png)
 ![alt text](public/response-auto-complete.png)
 
-단, 작성자 본인이 사용하는 API 이외에는 완성이 안되어 있으며, 이는 점진적으로 추가 예정입니다. 혹시 이 문구가 있는 버전을 사용하시는 분들은 아래 지원 API 목록에서 본인이 필요한 API를 확인해주세요.
+단, 공식문서상 UNSTABLE로 표기된 API들은 지원하지 않습니다.
+- 결제 대용량 다건 조회(커서기반)
+- B2B 서비스 API
 
 ## Usage
 
@@ -73,23 +75,4 @@ app.post('/payments/callback', async (req, res) => {
 });
 ```
 
-
-## 지원 API
-
-### 완성 API
-다음의 API들은 정상적으로 사용이 가능합니다.
-- 인증 관련 API
-- 결제 관련 API
-- 결제 예약 관련 API
-- 빌링키 관련 API
-
-### 현재 미완성 API
-다음의 API들은 해당 메소드 존재 여부와 상관없이 정상적인 API 요청이 안 이루어질 수 있습니다.
-- 결제 관련 API 일부
-  - 결제 대용량 다건 조회(커서기반)
-- 현금 영수증 관련 API
-- 본인인증 관련 API
-- 특정 PG사 관련 API
-
-
-last updated: 2024-04-07 (works with [`@portone/browser-sdk@0.0.5`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
+last updated: 2024-04-13 (works with [`@portone/browser-sdk@0.0.5`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
