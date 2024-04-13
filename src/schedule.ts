@@ -7,25 +7,25 @@ export class Schedules extends PortOneRequest {
     super(portone);
   }
 
-  public async find(scheduleId: string) {
+  public async find(scheduleId: string, storeId?: string) {
     return this.request<Response.FindSchedule>({
       method: 'GET',
-      url: `/payment-schedules/${scheduleId}`,
+      url: this.setQuery(`/payment-schedules/${scheduleId}`, { storeId }),
     });
   }
 
-  public async findMany(data: Request.FindManySchedules) {
+  public async findMany(data: Request.FindManySchedules, requestBody?: unknown) {
     return this.request<Response.FindManySchedules>({
       method: 'GET',
-      url: '/payment-schedules',
+      url: this.setQuery('/payment-schedules', { requestBody }),
       data,
     });
   }
 
-  public async cancel(data: Request.CancelSchedule) {
+  public async cancel(data: Request.CancelSchedule, requestBody?: unknown) {
     return this.request<Response.CancelSchedule>({
       method: 'DELETE',
-      url: '/payment-schedules',
+      url: this.setQuery('/payment-schedules', { requestBody }),
       data,
     });
   }

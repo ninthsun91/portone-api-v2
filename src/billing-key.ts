@@ -7,10 +7,10 @@ export class BillingKey extends PortOneRequest {
     super(portone);
   }
 
-  public async find(billingKey: string) {
+  public async find(billingKey: string, storeId?: string) {
     return this.request<Response.FindBillingKey>({
       method: 'GET',
-      url: `/billing-keys/${billingKey}`,
+      url: this.setQuery(`/billing-keys/${billingKey}`, { storeId }),
     });
   }
 
@@ -22,10 +22,10 @@ export class BillingKey extends PortOneRequest {
     });
   }
 
-  public async delete(billing_key: string) {
+  public async delete(billing_key: string, storeId?: string) {
     return this.request<Response.DeleteBillingKey>({
       method: 'DELETE',
-      url: `/billing-keys/${billing_key}`,
+      url: this.setQuery(`/billing-keys/${billing_key}`, { storeId }),
     });
   }
 }

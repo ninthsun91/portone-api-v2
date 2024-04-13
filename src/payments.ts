@@ -27,7 +27,7 @@ export class Payments extends PortOneRequest {
   public async find(paymentId: string, storeId?: string) {
     return this.request<Response.FindPayment>({
       method: 'GET',
-      url: storeId ? `/payments/${paymentId}?storeId=${storeId}` : `/payments/${paymentId}`,
+      url: this.setQuery(`/payments/${paymentId}`, { storeId }),
     });
   }
 
@@ -86,7 +86,7 @@ export class Payments extends PortOneRequest {
   public async closeVirtualAccount(paymentId: string, storeId?: string) {
     return this.request<Response.CloseVirtualAccount>({
       method: 'POST',
-      url: storeId ? `/payments/${paymentId}/virtual-account/close?storeId=${storeId}` : `/payments/${paymentId}/virtual-account/close`,
+      url: this.setQuery(`/payments/${paymentId}/virtual-account/close`, { storeId }),
     });
   }
 

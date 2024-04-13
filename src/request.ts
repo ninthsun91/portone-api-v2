@@ -20,6 +20,12 @@ export class PortOneRequest {
     const headers = await this.portOne.getHeaders();
     return _.merge({}, config, { headers });
   }
+
+  protected setQuery(url: string, query: Record<string, any>) {
+    const filteredQuery = _.omitBy(query, _.isUndefined);
+    const qs = new URLSearchParams(filteredQuery).toString();
+    return `${url}?${qs}`;
+  }
 }
 
 interface RequestConfig extends AxiosRequestConfig {
