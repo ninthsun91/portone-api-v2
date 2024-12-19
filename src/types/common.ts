@@ -71,6 +71,14 @@ export type SelectedChannel = {
   /** pg사 가맹점 식별 ID */
   pgMerchantId: string;
 };
+export type ChannelGroupSummary = {
+  /** 채널 그룹 ID */
+  id: string;
+  /** 채널 그룹 이름 */
+  name: string;
+  /** 테스트 채널 그룹 여부 */
+  isForTest: boolean;
+};
 
 /****************************/
 /*         Customer         */

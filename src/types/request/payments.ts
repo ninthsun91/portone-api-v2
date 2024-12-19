@@ -41,6 +41,8 @@ export interface CancelPayment {
   vatAmount?: number;
   /** 취소 사유 */
   reason: string;
+  requester?: Enum.CancelRequester;
+  promotionDiscountRetainOption?: Enum.PromotionDiscountRetainOption;
   /** 결제 건의 취소 가능 잔액. 본 취소 요청 이전의 취소 가능 잔액으로써, 값을 입력하면 잔액이 일치하는 경우에만 취소가 진행됩니다. 값을 입력하지 않으면 별도의 검증 처리를 수행하지 않습니다. (int64) */
   currentCancellableAmount?: number;
   /** 고객 정보 입력 형식 */
@@ -52,6 +54,8 @@ export interface PayWithBillingKey {
   storeId?: string;
   /** 빌링키 결제에 사용할 빌링키 */
   billingKey: string;
+  /** 채널 키. 다수 채널에 대해 발급된 빌링키에 대해 결제 채널을 특정할 때 명시 */
+  channelKey?: string;
   /** 주문명 */
   orderName: string;
   /** 통화 단위 */
@@ -82,15 +86,19 @@ export interface PayWithBillingKey {
   productType?: Enum.PaymentProductType;
   /** 분리 형식의 주소 입력 정보 */
   shippingAddress?: SeparatedAddressInput;
+  /** 해당 결제에 적용할 프로모션 ID */
+  promotionId?: string;
   /** PG사별 특수 파라미터 */
   bypass?: string;
 }
 
-export interface PayInstant {
+export interface PayInstantBase {
   /** 미입력시 인증토큰에 등록된 storeId 사용 */
   storeId?: string;
-  /** 채널키 */
-  channelKey: string;
+  /** 채널키 또는 채널 그룹 ID 필수 */
+  channelKey?: string;
+  /** 채널 그룹 ID 또는 채널키 필수 */
+  channelGroupId?: string;
   /** 수기 결제 수단 입력 정보 */
   method: InstantPaymentMethodInput;
   /** 주문명 */
@@ -119,9 +127,15 @@ export interface PayInstant {
   productType?: Enum.PaymentProductType;
   /** 분리 형식의 주소 입력 정보 */
   shippingAddress?: SeparatedAddressInput;
+  /** 해당 결제에 적용할 프로모션 ID */
+  promotionId?: string;
 }
+export type PayInstant = PayInstantBase & (
+  | { channelKey: string; channelGroupId?: never }
+  | { channelKey?: never; channelGroupId: string }
+)
 
-export interface CloseVirtualAccount {}
+export interface CloseVirtualAccount { }
 
 export interface CreateEscrowLogistics {
   /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */

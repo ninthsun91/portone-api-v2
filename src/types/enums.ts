@@ -77,6 +77,12 @@ export const Bank = {
 } as const;
 export type Bank = typeof Bank[keyof typeof Bank];
 
+export const CancelRequester = {
+  ADMIN: 'ADMIN',
+  CUSTOMER: 'CUSTOMER',
+} as const;
+export type CancelRequester = typeof CancelRequester[keyof typeof CancelRequester];
+
 export const CardBrand = {
   VISA: 'VISA',
   JCB: 'JCB',
@@ -417,8 +423,21 @@ export const PortOneVersion = {
 } as const;
 export type PortOneVersion = typeof PortOneVersion[keyof typeof PortOneVersion];
 
+export const PromotionDiscountRetainOption = {
+  RETAIN: 'RETAIN',
+  RELEASE: 'RELEASE',
+} as const;
+export type PromotionDiscountRetainOption = typeof PromotionDiscountRetainOption[keyof typeof PromotionDiscountRetainOption];
+
 export const SelectedChannelType = {
   LIVE: 'LIVE',
   TEST: 'TEST',
 } as const;
 export type SelectedChannelType = typeof SelectedChannelType[keyof typeof SelectedChannelType];
+
+export const Trigger = {
+  CONSOLE: 'CONSOLE',
+  API: 'API',
+  PORTONE_ADMIN: 'PORTONE_ADMIN',
+} as const;
+export type Trigger = typeof Trigger[keyof typeof Trigger];

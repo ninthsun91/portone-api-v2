@@ -1,4 +1,4 @@
-import type { Card, CardCredential, Customer, DateTimeRange, SelectedChannel, SeparatedAddressInput } from './common';
+import type { Card, CardCredential, ChannelGroupSummary, Customer, DateTimeRange, SelectedChannel, SeparatedAddressInput } from './common';
 import type * as Enum from './enums';
 
 /***************************/
@@ -93,8 +93,6 @@ interface PaymentBase {
   merchantId: string;
   /** 상점 ID. 미입력시 토큰에 담긴 상점 ID 사용 */
   storeId: string;
-  /** 결제, 본인인증에 사용된 채널 정보 */
-  channel?: SelectedChannel;
   /** 포트원 버전 */
   version: Enum.PortOneVersion;
   /** 결제 요청 시점 (RFC 3339 date-time) */
@@ -103,6 +101,7 @@ interface PaymentBase {
   updatedAt: string;
   /** 상태 변경 시점 (RFC 3339 date-time) */
   statusChangedAt: string;
+
   /** 주문명 */
   orderName: string;
   /** 결제 금액 정보 */
@@ -111,36 +110,42 @@ interface PaymentBase {
   currency: Enum.Currency;
   /** 결제 고객 정보 */
   customer: Customer;
-
+  /** 결제 수단 정보 */
   method?: PaymentMethod;
-  /** 결제 예약이 있는 경우 예약 ID */
-  scheduleId?: string;
-  /** 빌링키 결제인 경우 결제시 사용된 빌링키 */
-  billingKey?: string;
-  /** 웹훅 발송 내역 */
-  webhooks?: PaymentWebhook[];
+  /** 상품 정보 */
+  products?: PaymentProduct[];
+  /** 상품 개수 */
+  productCount?: number;
+  /** 국가 코드 */
+  country?: Enum.Country;
   /** 결제 프로모션 ID */
   promotionId?: string;
   /** 문화비 지출 여부 */
   isCulturalExpense?: boolean;
   /** 에스크로 정보 */
   escrow?: PaymentEscrow;
-  /** 상품 정보 */
-  products?: PaymentProduct[];
-  productCount?: number;
-  /** 가맹점에서 저장한 사용자 지정 데이터 */
-  customData?: string;
-  country?: Enum.Country;
-  /** 결제 완료 시각 (RFC 3339 date-time) */
-  paidAt?: string;
   /** 현금영수증 정보 */
   cashReceipt?: PaymentCashReceipt;
   /** 거래 영수증 URL */
   receiptUrl?: string;
+
+  /** 결제, 본인인증에 사용된 채널 정보 */
+  channel?: SelectedChannel;
+  /** 채널 그룹 정보 */
+  channelGroup?: ChannelGroupSummary;
+  /** 결제 예약이 있는 경우 예약 ID */
+  scheduleId?: string;
+  /** 빌링키 결제인 경우 결제시 사용된 빌링키 */
+  billingKey?: string;
+  /** 웹훅 발송 내역 */
+  webhooks?: PaymentWebhook[];
+  /** 가맹점에서 저장한 사용자 지정 데이터 */
+  customData?: string;
 }
 export interface PaidPayment extends PaymentBase {
   status: 'PAID';
   channel: SelectedChannel;
+  /** 결제 완료 시각 (RFC 3339 date-time) */
   paidAt: string;
   /** PG사 결제 ID */
   pgTxId?: string;
@@ -151,6 +156,10 @@ export interface PaidPayment extends PaymentBase {
 export interface CancelledPayment extends PaymentBase {
   status: 'CANCELLED';
   channel: SelectedChannel;
+  /** 결제 완료 시각 (RFC 3339 date-time) */
+  paidAt?: string;
+  /** PG사 결제 ID */
+  pgTxId?: string;
   /** 결제 취소 내역 */
   cancellations: PaymentCancellation[];
   /** 결제 취소 시점 (RFC 3339 date-time) */
@@ -160,6 +169,10 @@ export interface CancelledPayment extends PaymentBase {
 export interface PartialCancelledPayment extends PaymentBase {
   status: 'PARTIAL_CANCELLED';
   channel: SelectedChannel;
+  /** 결제 완료 시각 (RFC 3339 date-time) */
+  paidAt?: string;
+  /** PG사 결제 ID */
+  pgTxId?: string;
   /** 결제 취소 내역 */
   cancellations: PaymentCancellation[];
   /** 결제 취소 시점 (RFC 3339 date-time) */
@@ -168,6 +181,8 @@ export interface PartialCancelledPayment extends PaymentBase {
 
 export interface FailedPayment extends PaymentBase {
   status: 'FAILED';
+  /** 결제 실패 정보 */
+  failure: PaymentFailure;
   /** 결제 실패 시점 (RFC 3339 date-time) */
   failedAt: string;
 }
@@ -186,6 +201,8 @@ export interface ReadyPayment extends PaymentBase {
 export interface VirtualAccountIssuedPayment extends PaymentBase {
   status: 'VIRTUAL_ACCOUNT_ISSUED';
   channel: SelectedChannel;
+  /** PG사 결제 ID */
+  pgTxId?: string;
 }
 
 /***************************/
@@ -229,6 +246,7 @@ export type PaymentCancellation =
 
 interface PaymentCancellationBase {
   status: 'FAILED' | 'REQUESTED' | 'SUCCEEDED';
+  /** 취소 내역 ID */
   id: string;
   /** PG사 결제 취소내역 ID */
   pgCancelltationId?: string;
@@ -246,6 +264,8 @@ interface PaymentCancellationBase {
   requestedAt: string;
   /** 취소 완료 시점 (RFC 3339 date-time) */
   cancelledAt?: string;
+  /** 취소 요청 트리거 */
+  trigger?: Enum.Trigger;
 }
 
 export interface FailedPaymentCancellation extends PaymentCancellationBase {
@@ -347,6 +367,18 @@ export interface PaymentEscrowReceiverInput {
 }
 
 /***************************/
+/*      PaymentFailure      */
+/***************************/
+export interface PaymentFailure {
+  /** 실패 원인 */
+  reason?: string;
+  /** PG사 실패 코드 */
+  pgCode?: string;
+  /** PG사 실패 메시지 */
+  pgMessage?: string;
+}
+
+/***************************/
 /*      PaymentFilter      */
 /***************************/
 export interface PaymentFilterInput {
@@ -425,7 +457,7 @@ export interface PaymentLogistics {
   /** 송장번호 */
   invoiceNumber: string;
   /** 발송시점 (RFC 3339 date-time) */
-  sendAt: string;
+  sentAt: string;
   /** 수령시점 (RFC 3339 date-time) */
   receivedAt?: string;
   /** 분리형식 주소 입력 정보 */
@@ -551,7 +583,7 @@ export interface PaymentWebhook {
   /** 웹훅 응답 정보 */
   response?: PaymentWebhookResponse;
   /** 웹훅 처리 시작 시점 (RFC 3339 date-time) */
-  triggeredAt: string;
+  triggeredAt?: string;
 }
 
 export interface PaymentWebhookRequest {

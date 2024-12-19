@@ -145,7 +145,7 @@ export class Payments extends PortOneRequest {
   public async registerStoreReceipt(paymentId: string, data: Request.RegisterStoreReceipt) {
     return this.request<Response.RegisterStoreReceipt>({
       method: 'POST',
-      url: `/payments/${paymentId}/store-receipt`,
+      url: `/payments/${paymentId}/register-store-receipt`,
       data,
     });
   }
