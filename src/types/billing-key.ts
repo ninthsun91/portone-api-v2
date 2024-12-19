@@ -7,6 +7,8 @@ export interface BillingKeyPaymentInput {
   storeId?: string;
   /** 빌링키 결제에 사용할 빌링키 */
   billingKey: string;
+  /** 채널키. 다수 채널에 대해 발급된 빌링키에 대해 결제 채널을 특정하고 싶을 때 명시. */
+  channelKey?: string;
   /** 주문명 */
   orderName: string;
   /** 고객 정보 입력 정보 */
@@ -37,6 +39,8 @@ export interface BillingKeyPaymentInput {
   productType?: Enum.PaymentProductType;
   /** 분리형식 주소 입력 정보 */
   shippingAddress?: SeparatedAddressInput;
+  /** 프로모션 ID */
+  promotionId?: string;
   /** pg사별 추가 파라미터 */
   bypass?: string;
 }

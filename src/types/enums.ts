@@ -265,8 +265,16 @@ export const PaymentProductType = {
 } as const;
 export type PaymentProductType = typeof PaymentProductType[keyof typeof PaymentProductType];
 
+export const PaymentScheduleSortBy = {
+  CREATED_AT: 'CREATED_AT',
+  TIME_TO_PAY: 'TIME_TO_PAY',
+  COMPLETED_AT: 'COMPLETED_AT',
+} as const;
+export type PaymentScheduleSortBy = typeof PaymentScheduleSortBy[keyof typeof PaymentScheduleSortBy];
+
 export const PaymentScheduleStatus = {
   SCHEDULED: 'SCHEDULED',
+  PENDING: 'PENDING',
   STARTED: 'STARTED',
   FAILED: 'FAILED',
   REVOKED: 'REVOKED',
@@ -279,12 +287,6 @@ export const PaymentSortBy = {
   STATUS_CHANGED_AT: 'STATUS_CHANGED_AT',
 } as const;
 export type PaymentSortBy = typeof PaymentSortBy[keyof typeof PaymentSortBy];
-
-export const PaymentSortOrder = {
-  ASC: 'ASC',
-  DESC: 'DESC',
-} as const;
-export type PaymentSortOrder = typeof PaymentSortOrder[keyof typeof PaymentSortOrder];
 
 export const PaymentStatus = {
   PAID: 'PAID',
@@ -434,6 +436,12 @@ export const SelectedChannelType = {
   TEST: 'TEST',
 } as const;
 export type SelectedChannelType = typeof SelectedChannelType[keyof typeof SelectedChannelType];
+
+export const SortOrder = {
+  ASC: 'ASC',
+  DESC: 'DESC',
+} as const;
+export type SortOrder = typeof SortOrder[keyof typeof SortOrder];
 
 export const Trigger = {
   CONSOLE: 'CONSOLE',

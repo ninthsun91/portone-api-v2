@@ -22,22 +22,20 @@ export class Schedules extends PortOneRequest {
   /**
    * 결제 예약 다건 조회
    */
-  public async findMany(data: Request.FindManySchedules, requestBody?: unknown) {
+  public async findMany(requestBody: Request.FindManySchedules) {
     return this.request<Response.FindManySchedules>({
       method: 'GET',
       url: this.setQuery('/payment-schedules', { requestBody }),
-      data,
     });
   }
 
   /**
    * 결제 예약 취소
    */
-  public async cancel(data: Request.CancelSchedule, requestBody?: unknown) {
+  public async cancel(requestBody: Request.CancelSchedule) {
     return this.request<Response.CancelSchedule>({
       method: 'DELETE',
       url: this.setQuery('/payment-schedules', { requestBody }),
-      data,
     });
   }
 

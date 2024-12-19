@@ -405,7 +405,7 @@ export interface PaymentFilterInput {
   /** 결제 건 정렬 기준 */
   sortBy?: Enum.PaymentSortBy;
   /** 결제 건 정렬 방식 */
-  sortOrder?: Enum.PaymentSortOrder;
+  sortOrder?: Enum.SortOrder;
   /** 포트원 버전 */
   version?: Enum.PortOneVersion;
   /** 웹훅 전송 상태 */

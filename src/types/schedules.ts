@@ -36,6 +36,8 @@ interface PaymentScheduleBase {
   totalAmount: number;
   /** 면세액 (int64) */
   taxFreeAmount?: number;
+  /** 부가세액 (int64) */
+  vatAmount?: number;
   /** 통화단위 */
   currency: Enum.Currency;
   /** 할부 개월 수 (int32) */
@@ -44,12 +46,21 @@ interface PaymentScheduleBase {
   noticeUrls?: string[];
   /** 상품 정보 */
   products?: PaymentProduct[];
+  /** 결제 예약 등록 시점 (RFC 3339 date-time) */
+  createdAt: string;
   /** 결제 예정 시점 (RFC 3339 date-time) */
   timeToPay: string;
 }
 
 export interface FailedPaymentSchedule extends PaymentScheduleBase {
   status: 'FAILED';
+  /** 결제 시작 시점 (RFC 3339 date-time) */
+  startedAt: string;
+  /** 결제 완료 시점 (RFC 3339 date-time) */
+  completedAt: string;
+}
+export interface PendingPaymentSchedule extends PaymentScheduleBase {
+  status: 'PENDING';
   /** 결제 시작 시점 (RFC 3339 date-time) */
   startedAt: string;
   /** 결제 완료 시점 (RFC 3339 date-time) */
@@ -91,6 +102,13 @@ export interface PaymentScheduleFilterInput {
   until?: string;
   /** 결제 예정 상태 리스트 */
   status?: Enum.PaymentScheduleStatus[];
+}
+
+export interface PaymentScheduleSortInput {
+  /** 결제 예약 건 정렬 기준 */
+  by?: Enum.PaymentScheduleSortBy;
+  /** 정렬 방식 */
+  order?: Enum.SortOrder;
 }
 
 export interface PaymentScheduleSummary {
