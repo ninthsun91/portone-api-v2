@@ -37,7 +37,7 @@ export class PortOneClient {
     return this.apiInstance;
   }
 
-  public async getHeaders() {
+  public async setAuthorization() {
     const isValid = await this.verifyToken();
     return isValid ? {
       Authorization: `Bearer ${this.token.accessToken}`,

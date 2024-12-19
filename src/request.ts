@@ -17,8 +17,13 @@ export class PortOneRequest {
   }
 
   private async setConfig(config: AxiosRequestConfig) {
-    const headers = await this.portOne.getHeaders();
-    return _.merge({}, config, { headers });
+    const authHeaders = await this.portOne.setAuthorization();
+    return _.merge({}, config, {
+      headers: {
+        ...authHeaders,
+        'Content-Type': 'application/json',
+      }
+    });
   }
 
   protected setQuery(url: string, query: Record<string, any>) {
