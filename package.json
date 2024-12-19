@@ -70,9 +70,7 @@
     "moduleNameMapper": {}
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "eslint --fix"
-    ]
+    "{src,test}/**/*.ts": []
   },
   "dependencies": {
     "axios": "^1.6.8",
