@@ -77,6 +77,51 @@ export const Bank = {
 } as const;
 export type Bank = typeof Bank[keyof typeof Bank];
 
+export const BillingKeyPaymentMethodType = {
+  CARD: 'CARD',
+  MOBILE: 'MOBILE',
+  TRANSFER: 'TRANSFER',
+  EASY_PAY: 'EASY_PAY',
+} as const;
+export type BillingKeyPaymentMethodType = typeof BillingKeyPaymentMethodType[keyof typeof BillingKeyPaymentMethodType];
+
+export const BillingKeySortBy = {
+  ISSUED_AT: 'ISSUED_AT',
+  REQUESTED_AT: 'REQUESTED_AT',
+  DELETED_AT: 'DELETED_AT',
+  STATUS_TIMESTAMP: 'STATUS_TIMESTAMP',
+} as const;
+export type BillingKeySortBy = typeof BillingKeySortBy[keyof typeof BillingKeySortBy];
+
+export const BillingKeyStatus = {
+  ISSUED: 'ISSUED',
+  DELETED: 'DELETED',
+} as const;
+export type BillingKeyStatus = typeof BillingKeyStatus[keyof typeof BillingKeyStatus];
+
+export const BillingKeyTextSearchField = {
+  CARD_BIN: 'CARD_BIN',
+  CARD_NUMBER: 'CARD_NUMBER',
+  PG_MERCHANT_ID: 'PG_MERCHANT_ID',
+  CUSTOMER_NAME: 'CUSTOMER_NAME',
+  CUSTOMER_EMAIL: 'CUSTOMER_EMAIL',
+  CUSTOMER_PHONE_NUMBER: 'CUSTOMER_PHONE_NUMBER',
+  CUSTOMER_ADDRESS: 'CUSTOMER_ADDRESS',
+  CUSTOMER_ZIPCODE: 'CUSTOMER_ZIPCODE',
+  USER_AGENT: 'USER_AGENT',
+  BILLING_KEY: 'BILLING_KEY',
+  CHANNEL_GROUP_NAME: 'CHANNEL_GROUP_NAME',
+} as const;
+export type BillingKeyTextSearchField = typeof BillingKeyTextSearchField[keyof typeof BillingKeyTextSearchField];
+
+export const BillingKeyTimeRangeField = {
+  ISSUED_AT: 'ISSUED_AT',
+  REQUESTED_AT: 'REQUESTED_AT',
+  DELETED_AT: 'DELETED_AT',
+  STATUS_TIMESTAMP: 'STATUS_TIMESTAMP',
+} as const;
+export type BillingKeyTimeRangeField = typeof BillingKeyTimeRangeField[keyof typeof BillingKeyTimeRangeField];
+
 export const CancelRequester = {
   ADMIN: 'ADMIN',
   CUSTOMER: 'CUSTOMER',
@@ -369,6 +414,40 @@ export const PaymentWebhookTrigger = {
 } as const;
 export type PaymentWebhookTrigger = typeof PaymentWebhookTrigger[keyof typeof PaymentWebhookTrigger];
 
+export const PgCompany = {
+  INICIS: 'INICIS',
+  NICE: 'NICE',
+  KCP: 'KCP',
+  DANAL: 'DANAL',
+  TOSSPAYMENTS: 'TOSSPAYMENTS',
+  MOBILIANS: 'MOBILIANS',
+  KICC: 'KICC',
+  SMARTRO: 'SMARTRO',
+  DAOU: 'DAOU',
+  BLUEWALNUT: 'BLUEWALNUT',
+  PAYPAL: 'PAYPAL',
+  ALIPAY: 'ALIPAY',
+  EXIMBAY: 'EXIMBAY',
+  PAYMENTWALL: 'PAYMENTWALL',
+  SETTLE: 'SETTLE',
+  GALAXIA: 'GALAXIA',
+  NAVERPAY: 'NAVERPAY',
+  KAKAOPAY: 'KAKAOPAY',
+  SMILEPAY: 'SMILEPAY',
+  KAKAO: 'KAKAO',
+  TOSSPAY: 'TOSSPAY',
+  CHAI: 'CHAI',
+  PAYCO: 'PAYCO',
+  PAYPLE: 'PAYPLE',
+  SYRUP: 'SYRUP',
+  KSNET: 'KSNET',
+  WELCOME: 'WELCOME',
+  JTNET: 'JTNET',
+  KPN: 'KPN',
+  HYPHEN: 'HYPHEN',
+} as const;
+export type PgCompany = typeof PgCompany[keyof typeof PgCompany];
+
 export const PgProvider = {
   ALIPAY: 'ALIPAY',
   BLUEWALNUT: 'BLUEWALNUT',
@@ -416,6 +495,8 @@ export const PgProvider = {
   TOSSPAYMENTS: 'TOSSPAYMENTS',
   UPLUS: 'UPLUS',
   WELCOME: 'WELCOME',
+  KCP_V2: 'KCP_V2',
+  HYPHEN: 'HYPHEN',
 } as const;
 export type PgProvider = typeof PgProvider[keyof typeof PgProvider];
 

@@ -58,7 +58,7 @@ export interface CardCredential {
 /***************************/
 /*         Channel         */
 /***************************/
-export type SelectedChannel = {
+export interface SelectedChannel {
   type: Enum.SelectedChannelType;
   /** 채널 ID */
   id?: string;
@@ -71,7 +71,7 @@ export type SelectedChannel = {
   /** pg사 가맹점 식별 ID */
   pgMerchantId: string;
 };
-export type ChannelGroupSummary = {
+export interface ChannelGroupSummary {
   /** 채널 그룹 ID */
   id: string;
   /** 채널 그룹 이름 */
@@ -79,6 +79,22 @@ export type ChannelGroupSummary = {
   /** 테스트 채널 그룹 여부 */
   isForTest: boolean;
 };
+export type ChannelSpecificFailure = ChannelSpecificFailureInvalidRequest | ChannelSpecificFailurePgProvider;
+export interface ChannelSpecificFailureInvalidRequest {
+  type: 'INVALID_REQUEST';
+  /** 결제, 본인인증 등에 선택된 채널 정보 */
+  channel: SelectedChannel;
+  message?: string;
+}
+export interface ChannelSpecificFailurePgProvider {
+  type: 'PG_PROVIDER';
+  /** 결제, 본인인증 등에 선택된 채널 정보 */
+  channel: SelectedChannel;
+  message?: string;
+  pgCode: string;
+  pgMessage: string;
+}
+
 
 /****************************/
 /*         Customer         */

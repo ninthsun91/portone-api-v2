@@ -20,6 +20,17 @@ export class BillingKey extends PortOneRequest {
   }
 
   /**
+   * 빌링키 다건 조회
+   * @param requestBody 빌링키 다건 조회 요청 데이터
+   */
+  public async findMany(requestBody: Request.FindManyBillingKeys) {
+    return this.request<Response.FindManyBillingKeys>({
+      method: 'GET',
+      url: this.setQuery('/billing-keys', { requestBody }),
+    });
+  }
+
+  /**
    * 빌링키 발급
    */
   public async issue(data: Request.IssueBillingKey) {
