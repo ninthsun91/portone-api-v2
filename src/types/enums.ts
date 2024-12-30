@@ -506,11 +506,34 @@ export const PortOneVersion = {
 } as const;
 export type PortOneVersion = typeof PortOneVersion[keyof typeof PortOneVersion];
 
+export const PromotionCardCompany = {
+  WOORI_CARD: 'WOORI_CARD',
+  BC_CARD: 'BC_CARD',
+  SAMSUNG_CARD: 'SAMSUNG_CARD',
+  SHINHAN_CARD: 'SHINHAN_CARD',
+  HYUNDAI_CARD: 'HYUNDAI_CARD',
+  LOTTE_CARD: 'LOTTE_CARD',
+  NH_CARD: 'NH_CARD',
+  HANA_CARD: 'HANA_CARD',
+  KOOKMIN_CARD: 'KOOKMIN_CARD',
+} as const;
+export type PromotionCardCompany = typeof PromotionCardCompany[keyof typeof PromotionCardCompany];
+
 export const PromotionDiscountRetainOption = {
   RETAIN: 'RETAIN',
   RELEASE: 'RELEASE',
 } as const;
 export type PromotionDiscountRetainOption = typeof PromotionDiscountRetainOption[keyof typeof PromotionDiscountRetainOption];
+
+export const PromotionStatus = {
+  SCHEDULED: 'SCHEDULED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  PAUSED: 'PAUSED',
+  BUDGET_EXHAUSTED: 'BUDGET_EXHAUSTED',
+  TERMINATED: 'TERMINATED',
+  COMPLETED: 'COMPLETED',
+} as const;
+export type PromotionStatus = typeof PromotionStatus[keyof typeof PromotionStatus];
 
 export const SelectedChannelType = {
   LIVE: 'LIVE',

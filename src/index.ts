@@ -6,6 +6,7 @@ import {
   Identity,
   KakaoPay,
   Payments,
+  Promotions,
   Schedules,
 } from './apis';
 
@@ -15,6 +16,7 @@ export class PortOne {
   declare public identity: Identity;
   declare public kakaopay: KakaoPay;
   declare public payments: Payments;
+  declare public promotions: Promotions;
   declare public schedules: Schedules;
 
   constructor(options: PortOneOptions) {
@@ -26,6 +28,7 @@ export class PortOne {
       Identity,
       KakaoPay,
       Payments,
+      Promotions,
       Schedules,
     ];
     routes.forEach((route) => {

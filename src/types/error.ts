@@ -63,6 +63,10 @@ export interface PaymentScheduleNotFoundError extends PortOneError {
   type: 'PAYMENT_SCHEDULE_NOT_FOUND';
 }
 
+export interface PromotionNotFoundError extends PortOneError {
+  type: 'PROMOTION_NOT_FOUND';
+}
+
 export interface WebhookNotFoundError extends PortOneError {
   type: 'WEBHOOK_NOT_FOUND';
 }
