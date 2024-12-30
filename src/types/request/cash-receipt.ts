@@ -2,7 +2,7 @@ import * as Enum from '../enums';
 import type { IssueCashReceiptCustomerInput } from '../cash-receipt';
 import type { PaymentAmountInput } from '../payments';
 
-export interface FindCashReceipt {}
+export interface FindCashReceipt { }
 
 export interface IssueCashReceipt {
   /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
@@ -23,6 +23,8 @@ export interface IssueCashReceipt {
   productType?: Enum.PaymentProductType;
   /** 현금영수증 발급 시 고객 관련 입력 정보 */
   customer: IssueCashReceiptCustomerInput;
+  /** 결제 시점 (RFC 3339 date-time) */
+  paidAt?: string;
 }
 
-export interface CancelCashReceipt {}
+export interface CancelCashReceipt { }
