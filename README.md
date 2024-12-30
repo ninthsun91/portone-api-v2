@@ -1,5 +1,6 @@
 # PortOne REST API V2
 
+- 24/12/30 - `0.0.11` 버전을 기준으로 파트너 정산을 제외한 모든 API들 업데이트 되었습니다.
 - [PortOne 개발자센터 - REST API V2](https://developers.portone.io/api/rest-v2?v=v2)
 
 포트원 API V2의 request, response 타입에 대한 자동완성을 모두 지원합니다.
@@ -8,7 +9,6 @@
 
 단, 공식문서상 UNSTABLE로 표기된 API들은 지원하지 않습니다.
 - 결제 대용량 다건 조회(커서기반)
-- B2B 서비스 API
 
 ## Usage
 
@@ -75,4 +75,4 @@ app.post('/payments/callback', async (req, res) => {
 });
 ```
 
-last updated: 2024-04-13 (works with [`@portone/browser-sdk@0.0.5`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
+last updated: 2024-12-30 (works with [`@portone/browser-sdk@0.0.11`](https://www.npmjs.com/package/@portone/browser-sdk?activeTab=readme))
