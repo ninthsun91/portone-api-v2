@@ -22,6 +22,20 @@ export interface SeparatedAddressInput {
 }
 
 /****************************/
+/*           Bank           */
+/****************************/
+export interface BankInfo {
+  /** 은행 코드 */
+  bank: Enum.Bank;
+  /** 은행 이름 */
+  name: BankInfoName;
+}
+
+export interface BankInfoName {
+  ko: string;
+}
+
+/****************************/
 /*           Card           */
 /****************************/
 export type Card = {
