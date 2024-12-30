@@ -1,6 +1,6 @@
 {
   "name": "portone-api-v2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "PortOne REST API v2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
