@@ -27,6 +27,8 @@ export interface FailedIdentityVerification extends IdentityVerificationBase {
   status: 'FAILED';
   /** 요청 시 고객 정보 */
   requestedCustomer: IdentityVerificationRequestedCustomer;
+  /** 본인인증 실패 사유 */
+  failure: IdentityVerificationFailure;
 }
 
 export interface ReadyIdentityVerification extends IdentityVerificationBase {
@@ -45,6 +47,15 @@ export interface VerifiedIdentityVerification extends IdentityVerificationBase {
   pgTxId: string;
   /** PG사 응답 데이터 */
   pgRawResponse: string;
+}
+
+export interface IdentityVerificationFailure {
+  /** 실패 사유 */
+  reason?: string;
+  /** PG사 오류 코드 */
+  pgCode?: string;
+  /** PG사 오류 메시지 */
+  pgMessage?: string;
 }
 
 export interface IdentityVerificationRequestedCustomer {
@@ -84,4 +95,6 @@ export interface SendIdentityVerificationBodyCustomer {
   phoneNumber: string;
   /** 주민등록번호 앞 7자리. SMS 방식인 경우 필수 입력 */
   identityNumber?: string;
+  /** 고객의 요청속도 제한에 사용 */
+  ipAddress?: string;
 }

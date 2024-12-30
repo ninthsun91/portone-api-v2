@@ -3,7 +3,7 @@ import { PortOneRequest } from './request';
 import {
   BillingKey,
   CashReceipt,
-  Identity,
+  IdentityVerification,
   KakaoPay,
   Payments,
   Promotions,
@@ -11,10 +11,10 @@ import {
 } from './apis';
 
 export class PortOne {
-  declare public billingkey: BillingKey;
-  declare public cashreceipt: CashReceipt;
-  declare public identity: Identity;
-  declare public kakaopay: KakaoPay;
+  declare public billingKey: BillingKey;
+  declare public cashReceipt: CashReceipt;
+  declare public identityVerification: IdentityVerification;
+  declare public kakaoPay: KakaoPay;
   declare public payments: Payments;
   declare public promotions: Promotions;
   declare public schedules: Schedules;
@@ -25,15 +25,16 @@ export class PortOne {
     const routes: (typeof PortOneRequest)[] = [
       BillingKey,
       CashReceipt,
-      Identity,
+      IdentityVerification,
       KakaoPay,
       Payments,
       Promotions,
       Schedules,
     ];
     routes.forEach((route) => {
+      const routeName = route.name.charAt(0).toLowerCase() + route.name.slice(1);
       // @ts-expect-error This is a dynamic property assignment
-      this[route.name.toLowerCase()] = new route(client);
+      this[routeName] = new route(client);
     });
   }
 }

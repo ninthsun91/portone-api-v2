@@ -1,7 +1,7 @@
 import * as Enum from '../enums';
 import type { SendIdentityVerificationBodyCustomer } from '../identity-verification';
 
-export interface FindIdentityVerification {}
+export interface FindIdentityVerification { }
 
 export interface SendIdentityVerification {
   /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
@@ -23,8 +23,8 @@ export interface SendIdentityVerification {
 export interface ConfirmIdentityVerification {
   /** 상점 ID. 미입력 시 토큰에 담긴 값 사용 */
   storeId?: string;
-  /** OTP */
+  /** OTP. SMS 방식에서만 사용 */
   otp?: string;
 }
 
-export interface ResendIdentityVerification {}
+export interface ResendIdentityVerification { }

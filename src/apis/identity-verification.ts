@@ -2,7 +2,7 @@ import { PortOneRequest } from '../request';
 import { PortOneClient } from '../client';
 import type { Request, Response } from '../types';
 
-export class Identity extends PortOneRequest {
+export class IdentityVerification extends PortOneRequest {
   constructor(portone: PortOneClient) {
     super(portone);
   }
