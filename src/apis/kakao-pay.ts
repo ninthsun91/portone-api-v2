@@ -1,6 +1,6 @@
-import { PortOneRequest } from './request';
-import { PortOneClient } from './client';
-import type { Request, Response } from './types';
+import { PortOneRequest } from '../request';
+import { PortOneClient } from '../client';
+import type { Request, Response } from '../types';
 
 export class KakaoPay extends PortOneRequest {
   constructor(portone: PortOneClient) {

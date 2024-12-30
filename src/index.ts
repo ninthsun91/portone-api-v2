@@ -1,11 +1,13 @@
 import { PortOneClient, PortOneOptions } from './client';
 import { PortOneRequest } from './request';
-import { BillingKey } from './billing-key';
-import { CashReceipt } from './cash-receipt';
-import { Identity } from './identity';
-import { KakaoPay } from './kakao-pay';
-import { Payments } from './payments';
-import { Schedules } from './schedule';
+import {
+  BillingKey,
+  CashReceipt,
+  Identity,
+  KakaoPay,
+  Payments,
+  Schedules,
+} from './apis';
 
 export class PortOne {
   declare public billingkey: BillingKey;
